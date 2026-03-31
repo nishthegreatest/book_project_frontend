@@ -86,30 +86,32 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50">
-      <nav className="section-wrap pt-5 pb-4">
+    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border/30">
+      <nav className="section-wrap py-4">
         <motion.div
-          initial={{ y: -18, opacity: 0 }}
+          initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.35 }}
-          className="glass-surface rounded-3xl px-4 md:px-6 py-3 flex items-center justify-between border-white/70"
+          transition={{ duration: 0.4 }}
+          className="flex items-center justify-between"
         >
-          <div className="flex items-center gap-6">
-            <button onClick={() => navigate("/")} className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center shadow-lg shadow-orange-300/40">
+          <div className="flex items-center gap-8">
+            <button onClick={() => navigate("/")} className="flex items-center gap-3 group">
+              <div className="h-11 w-11 rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground flex items-center justify-center shadow-[0_8px_16px_rgba(80,127,83,0.25)] group-hover:shadow-[0_12px_24px_rgba(80,127,83,0.35)] transition-shadow duration-200">
                 <BookOpen className="h-5 w-5" />
               </div>
-              <h1 className="text-lg font-bold text-foreground">Bookly</h1>
+              <h1 className="text-xl font-bold text-foreground">Bookly</h1>
             </button>
 
-            <div className="hidden md:flex items-center gap-2 rounded-2xl bg-white/65 border border-white/70 p-1">
+            <div className="hidden md:flex items-center gap-1 bg-card/40 rounded-2xl border border-border/40 p-1.5">
               {navItems.map((item) => (
                 <NavLink
                   key={item.label}
                   to={item.to}
                   className={({ isActive }) =>
-                    `px-4 py-2 rounded-xl text-sm font-semibold transition-colors ${
-                      isActive ? "bg-white text-slate-900 border border-slate-200/60 shadow-sm" : "text-slate-500 hover:text-slate-900"
+                    `px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                      isActive 
+                        ? "bg-primary text-primary-foreground shadow-[0_4px_12px_rgba(80,127,83,0.2)]" 
+                        : "text-foreground/70 hover:text-foreground hover:bg-background/50"
                     }`
                   }
                 >
@@ -119,16 +121,18 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <button
               onClick={() => navigate("/cart")}
-              className="relative p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 hover:bg-slate-900 transition-colors shadow-[0_8px_20px_rgba(15,23,42,0.2)]"
+              className="relative p-2.5 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 card-shadow hover:card-shadow-lg group"
               aria-label="Open cart"
             >
-              <ShoppingCart className="h-5 w-5 text-white" />
-              <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-orange-500 text-white text-[10px] flex items-center justify-center font-bold ring-2 ring-white/90">
-                {cartCount}
-              </span>
+              <ShoppingCart className="h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-accent text-accent-foreground text-[10px] flex items-center justify-center font-bold ring-2 ring-background">
+                  {cartCount}
+                </span>
+              )}
             </button>
 
             {isLoggedIn ? (
@@ -136,7 +140,7 @@ const Header = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="font-semibold hover:bg-white/60 rounded-xl hidden lg:inline-flex"
+                  className="font-medium rounded-lg hidden lg:inline-flex hover:bg-background/80"
                   onClick={() => navigate("/invoices")}
                 >
                   Invoices
@@ -144,7 +148,7 @@ const Header = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="font-semibold hover:bg-white/60 rounded-xl hidden sm:inline-flex"
+                  className="font-medium rounded-lg hidden sm:inline-flex hover:bg-background/80"
                   onClick={() => navigate("/profile")}
                 >
                   Profile
@@ -152,7 +156,7 @@ const Header = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="rounded-xl px-5 font-semibold bg-white/70 border-white/70 hover:bg-white hidden sm:inline-flex"
+                  className="rounded-lg px-4 font-medium hidden sm:inline-flex"
                   onClick={() => void handleSignOut()}
                 >
                   Sign Out
@@ -163,15 +167,15 @@ const Header = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="font-semibold hover:bg-white/60 rounded-xl hidden sm:inline-flex"
+                  className="font-medium rounded-lg hidden sm:inline-flex hover:bg-background/80"
                   onClick={() => navigate("/register")}
                 >
                   Register
                 </Button>
                 <Button
-                  variant="outline"
+                  variant="default"
                   size="sm"
-                  className="rounded-xl px-5 font-semibold bg-white/70 border-white/70 hover:bg-white hidden sm:inline-flex"
+                  className="rounded-lg px-4 font-medium hidden sm:inline-flex"
                   onClick={() => navigate("/login")}
                 >
                   Sign In
@@ -180,8 +184,9 @@ const Header = () => {
             )}
 
             <button
-              className="md:hidden p-2.5 rounded-xl bg-white/75 border border-white/70 text-slate-700"
+              className="md:hidden p-2.5 rounded-lg bg-card border border-border/50 text-foreground hover:bg-card/80 transition-colors duration-200"
               onClick={() => setIsMenuOpen((prev) => !prev)}
+              aria-label="Toggle menu"
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -191,11 +196,11 @@ const Header = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: -12, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden mt-3 glass-surface rounded-2xl p-3 border border-white/70"
+              className="md:hidden mt-3 bg-card border border-border/40 rounded-2xl p-3 card-shadow"
             >
               <div className="grid grid-cols-2 gap-2">
                 {navItems.map((item) => (
@@ -205,7 +210,7 @@ const Header = () => {
                       setIsMenuOpen(false);
                       navigate(item.to);
                     }}
-                    className="rounded-xl py-2.5 text-sm font-semibold bg-white/70 hover:bg-white text-slate-700 transition-colors"
+                    className="rounded-lg py-2.5 text-sm font-medium bg-background/60 hover:bg-background text-foreground transition-colors duration-200"
                   >
                     {item.label}
                   </button>
@@ -218,7 +223,7 @@ const Header = () => {
                         setIsMenuOpen(false);
                         navigate("/profile");
                       }}
-                      className="rounded-xl py-2.5 text-sm font-semibold bg-white/75 hover:bg-white text-slate-700 transition-colors"
+                      className="rounded-lg py-2.5 text-sm font-medium bg-background/60 hover:bg-background text-foreground transition-colors duration-200"
                     >
                       Profile
                     </button>
@@ -227,13 +232,13 @@ const Header = () => {
                         setIsMenuOpen(false);
                         navigate("/invoices");
                       }}
-                      className="rounded-xl py-2.5 text-sm font-semibold bg-white/75 hover:bg-white text-slate-700 transition-colors"
+                      className="rounded-lg py-2.5 text-sm font-medium bg-background/60 hover:bg-background text-foreground transition-colors duration-200"
                     >
                       Invoices
                     </button>
                     <button
                       onClick={() => void handleSignOut()}
-                      className="col-span-2 rounded-xl py-2.5 text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-white transition-colors"
+                      className="col-span-2 rounded-lg py-2.5 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200"
                     >
                       Sign Out
                     </button>
@@ -245,7 +250,7 @@ const Header = () => {
                         setIsMenuOpen(false);
                         navigate("/register");
                       }}
-                      className="rounded-xl py-2.5 text-sm font-semibold bg-white/75 hover:bg-white text-slate-700 transition-colors"
+                      className="rounded-lg py-2.5 text-sm font-medium bg-background/60 hover:bg-background text-foreground transition-colors duration-200"
                     >
                       Register
                     </button>
@@ -254,7 +259,7 @@ const Header = () => {
                         setIsMenuOpen(false);
                         navigate("/login");
                       }}
-                      className="rounded-xl py-2.5 text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-white transition-colors"
+                      className="col-span-2 rounded-lg py-2.5 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200"
                     >
                       Sign In
                     </button>

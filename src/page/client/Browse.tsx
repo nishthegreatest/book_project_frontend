@@ -119,52 +119,52 @@ const Browse = () => {
     <div className="w-full">
       <main className="section-wrap py-6 lg:py-10 space-y-6">
         <section id="browse" className="scroll-mt-32">
-          <div className="relative overflow-hidden rounded-[2.25rem] border border-white/70 bg-gradient-to-br from-white/95 via-amber-50/60 to-orange-100/50 p-6 md:p-9 shadow-[0_24px_60px_rgba(15,23,42,0.12)]">
-            <div className="absolute -right-14 -top-16 h-56 w-56 rounded-full bg-amber-300/30 blur-3xl" />
-            <div className="absolute -left-16 -bottom-16 h-56 w-56 rounded-full bg-orange-300/30 blur-3xl" />
+          <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-card card-shadow p-6 md:p-8">
+            <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
+            <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-accent/5 blur-3xl pointer-events-none" />
 
             <div className="relative flex flex-col gap-6">
               <div>
-                <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-orange-700/90 font-bold mb-3">
+                <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.1em] text-primary font-bold mb-2">
                   <Sparkles className="h-3.5 w-3.5" />
                   Search Products
                 </p>
-                <h2 className="text-3xl md:text-4xl font-black text-slate-900">Browse All Books</h2>
-                <p className="text-sm text-slate-600 mt-2 max-w-2xl">
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground">Browse All Books</h2>
+                <p className="text-sm text-foreground/70 mt-3 max-w-2xl">
                   Find books faster with title search, filters, and clean product discovery flow.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div className="rounded-2xl bg-white/90 border border-white/95 p-3.5 shadow-sm">
-                  <p className="text-xs uppercase text-slate-500 font-semibold tracking-wide">Books</p>
-                  <p className="mt-1 text-xl font-black text-slate-900 flex items-center gap-2">
-                    <BookOpen className="h-5 w-5 text-orange-500" />
+                <div className="rounded-lg bg-background/60 border border-border/40 p-4">
+                  <p className="text-xs uppercase text-foreground/60 font-semibold tracking-[0.1em]">Books</p>
+                  <p className="mt-2 text-2xl font-bold text-foreground flex items-center gap-2">
+                    <BookOpen className="h-5 w-5 text-primary" />
                     {books.length}
                   </p>
                 </div>
-                <div className="rounded-2xl bg-white/90 border border-white/95 p-3.5 shadow-sm">
-                  <p className="text-xs uppercase text-slate-500 font-semibold tracking-wide">Categories</p>
-                  <p className="mt-1 text-xl font-black text-slate-900 flex items-center gap-2">
-                    <Layers className="h-5 w-5 text-orange-500" />
+                <div className="rounded-lg bg-background/60 border border-border/40 p-4">
+                  <p className="text-xs uppercase text-foreground/60 font-semibold tracking-[0.1em]">Categories</p>
+                  <p className="mt-2 text-2xl font-bold text-foreground flex items-center gap-2">
+                    <Layers className="h-5 w-5 text-primary" />
                     {bookCategory.length}
                   </p>
                 </div>
-                <div className="rounded-2xl bg-white/90 border border-white/95 p-3.5 shadow-sm">
-                  <p className="text-xs uppercase text-slate-500 font-semibold tracking-wide">Showing</p>
-                  <p className="mt-1 text-xl font-black text-slate-900">{filteredBooks.length}</p>
+                <div className="rounded-lg bg-background/60 border border-border/40 p-4">
+                  <p className="text-xs uppercase text-foreground/60 font-semibold tracking-[0.1em]">Showing</p>
+                  <p className="mt-2 text-2xl font-bold text-foreground">{filteredBooks.length}</p>
                 </div>
               </div>
 
               <div className="flex flex-col md:flex-row items-stretch md:items-center gap-2">
                 <div className="relative w-full md:flex-1">
-                  <Search className="h-4 w-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <Search className="h-4 w-4 text-foreground/40 absolute left-3 top-1/2 -translate-y-1/2" />
                   <input
                     type="text"
                     value={searchTitle}
                     onChange={(e) => setSearchTitle(e.target.value)}
                     placeholder="Search by book title..."
-                    className="h-10 w-full rounded-xl border border-slate-200 bg-white/95 pl-9 pr-3 text-sm text-slate-700 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-orange-300/40 focus:border-orange-300/40"
+                    className="h-10 w-full rounded-lg border border-border/50 bg-background px-3 pl-9 text-sm text-foreground placeholder:text-foreground/50 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
                   />
                 </div>
 
@@ -173,7 +173,7 @@ const Browse = () => {
                   value={selectedCategory}
                   onValueChange={(value) => setSelectedCategory(String(value ?? ""))}
                 >
-                  <ComboboxInput className="w-full md:w-56 bg-white/95" placeholder="Filter by category" />
+                  <ComboboxInput className="w-full md:w-56 bg-background border-border/50" placeholder="Filter by category" />
                   <ComboboxContent>
                     <ComboboxEmpty>No items found.</ComboboxEmpty>
                     <ComboboxList>
@@ -191,7 +191,7 @@ const Browse = () => {
                   value={selectedAuthor}
                   onValueChange={(value) => setSelectedAuthor(String(value ?? ""))}
                 >
-                  <ComboboxInput className="w-full md:w-56 bg-white/95" placeholder="Filter by author" />
+                  <ComboboxInput className="w-full md:w-56 bg-background border-border/50" placeholder="Filter by author" />
                   <ComboboxContent>
                     <ComboboxEmpty>No items found.</ComboboxEmpty>
                     <ComboboxList>
@@ -211,7 +211,7 @@ const Browse = () => {
                   value={minPrice}
                   onChange={(e) => setMinPrice(e.target.value)}
                   placeholder="Min price"
-                  className="h-10 w-full md:w-32 rounded-xl border border-slate-200 bg-white/95 px-3 text-sm text-slate-700 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-orange-300/40 focus:border-orange-300/40"
+                  className="h-10 w-full md:w-32 rounded-lg border border-border/50 bg-background px-3 text-sm text-foreground placeholder:text-foreground/50 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
                 />
 
                 <input
@@ -221,7 +221,7 @@ const Browse = () => {
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(e.target.value)}
                   placeholder="Max price"
-                  className="h-10 w-full md:w-32 rounded-xl border border-slate-200 bg-white/95 px-3 text-sm text-slate-700 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-orange-300/40 focus:border-orange-300/40"
+                  className="h-10 w-full md:w-32 rounded-lg border border-border/50 bg-background px-3 text-sm text-foreground placeholder:text-foreground/50 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
                 />
               </div>
             </div>
@@ -229,7 +229,7 @@ const Browse = () => {
         </section>
 
         {feedbackMessage && (
-          <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-medium text-amber-800">
+          <div className="rounded-lg border border-primary/30 bg-primary/5 px-4 py-3 text-sm font-medium text-primary">
             {feedbackMessage}
           </div>
         )}

@@ -10,6 +10,26 @@ const bgColors = [
   "bg-violet-500/20",
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
 const LatestArrivals = () => {
   const [arrivals, setArrivals] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
@@ -54,41 +74,59 @@ const LatestArrivals = () => {
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
           </div>
         ) : error ? (
-          <div className="text-center py-20 text-red-500 font-body border border-red-200 rounded-xl bg-red-50">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center py-20 text-red-500 font-body border border-red-200 rounded-xl bg-red-50"
+          >
             <p>{error}</p>
-          </div>
+          </motion.div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+          >
             {arrivals.map((book, i) => (
               <motion.div
                 key={book.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                variants={itemVariants}
                 className="group"
               >
                 {/* Image with colored bg */}
-                <div className={`relative rounded-2xl overflow-hidden aspect-square mb-4 ${bgColors[i % bgColors.length]}`}>
+                <motion.div
+                  className={`relative rounded-2xl overflow-hidden aspect-square mb-4 ${bgColors[i % bgColors.length]}`}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <img
                     src={book.book_img}
                     alt={book.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-
-                </div>
+                  <motion.div
+                    className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"
+                  />
+                </motion.div>
 
                 <h3 className="font-display text-base font-bold text-foreground mb-1 line-clamp-1">{book.title}</h3>
                 <div className="flex items-center justify-between mb-3">
                   <span className="font-body font-bold text-foreground">${Number(book.price).toFixed(2)}</span>
                 
                 </div>
-                <button className="w-full border border-border text-foreground py-2 font-body text-xs font-semibold uppercase tracking-wider rounded-full hover:border-primary hover:text-primary transition-colors">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full border border-border text-foreground py-2 font-body text-xs font-semibold uppercase tracking-wider rounded-full hover:border-primary hover:text-primary transition-colors"
+                >
                   View Details
-                </button>
+                </motion.button>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
       </div>
     </section>

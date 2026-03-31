@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
 interface ModalProps {
@@ -32,38 +33,64 @@ const Modal = ({
         };
     }, [isOpen]);
 
-    if (!isOpen) return null;
-
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
-            {/* Backdrop */}
-            <div
-                className="fixed inset-0 bg-slate-950/55 backdrop-blur-md transition-opacity animate-in fade-in duration-300"
-                onClick={onClose}
-            />
+        <AnimatePresence>
+            {isOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+                    {/* Backdrop */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="fixed inset-0 bg-foreground/30 backdrop-blur-sm"
+                        onClick={onClose}
+                    />
 
-            {/* Modal Content */}
-            <div className={`relative w-full ${maxWidthClass} bg-white/95 border border-white/70 rounded-3xl shadow-[0_30px_80px_rgba(15,23,42,0.32)] overflow-hidden animate-in zoom-in-95 fade-in duration-300`}>
-                {showHeader && (
-                    <div className="flex items-center justify-between p-5 border-b border-slate-200/70 bg-gradient-to-r from-orange-50 to-amber-50">
-                        <h3 className="text-xl font-semibold text-slate-900">
-                            {title || "Details"}
-                        </h3>
-                        <button
-                            onClick={onClose}
-                            className="p-1.5 rounded-xl hover:bg-white transition-colors text-slate-500 hover:text-slate-900"
+                    {/* Modal Content */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        className={`relative w-full ${maxWidthClass} bg-card border border-border/50 rounded-2xl card-shadow-lg overflow-hidden`}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {showHeader && (
+                            <motion.div
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.1, duration: 0.3 }}
+                                className="flex items-center justify-between p-5 sm:p-6 border-b border-border/40 bg-card"
+                            >
+                                <h3 className="text-lg font-semibold text-foreground">
+                                    {title || "Details"}
+                                </h3>
+                                <motion.button
+                                    onClick={onClose}
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="p-1.5 rounded-lg hover:bg-background transition-all duration-200 text-foreground/60 hover:text-foreground"
+                                    aria-label="Close modal"
+                                >
+                                    <X size={20} />
+                                </motion.button>
+                            </motion.div>
+                        )}
+
+                        {/* Body */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.15, duration: 0.3 }}
+                            className={bodyClassName}
                         >
-                            <X size={20} />
-                        </button>
-                    </div>
-                )}
-
-                {/* Body */}
-                <div className={bodyClassName}>
-                    {children}
+                            {children}
+                        </motion.div>
+                    </motion.div>
                 </div>
-            </div>
-        </div>
+            )}
+        </AnimatePresence>
     );
 };
 
