@@ -31,7 +31,7 @@ const BookCard = ({
     <>
       <div
         onClick={() => setIsModalOpen(true)}
-        className="group relative overflow-hidden rounded-2xl p-4 border border-border/50 bg-card hover:border-border/80 card-shadow hover:card-shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+        className="group relative overflow-hidden rounded-2xl p-4 border border-border/50 bg-card hover:border-border/80 shadow-sm hover:shadow-sm-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer"
       >
         {/* Subtle gradient accents */}
         <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
@@ -49,7 +49,7 @@ const BookCard = ({
             }}
             className={`absolute top-3 left-3 z-10 h-8 w-8 rounded-full border shadow-sm grid place-items-center transition-all duration-200 ${
               favoriteActive
-                ? "bg-accent text-accent-foreground border-accent card-shadow-lg"
+                ? "bg-accent text-accent-foreground border-accent shadow-sm-lg"
                 : "bg-card/90 backdrop-blur border-border/60 text-foreground/60 hover:text-accent hover:bg-card hover:border-border/80"
             }`}
             aria-label={favoriteActive ? "Remove from favorites" : "Add to favorites"}

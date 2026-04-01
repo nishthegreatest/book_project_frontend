@@ -83,7 +83,7 @@ const OtpVerification = () => {
       <div className="absolute -top-16 -left-16 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute -bottom-16 -right-16 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
 
-      <div className="relative w-full max-w-md bg-card border border-border/50 rounded-2xl card-shadow p-6 md:p-8 backdrop-blur-xl">
+      <div className="relative w-full max-w-md bg-card border border-border/50 rounded-2xl shadow-sm p-6 md:p-8 backdrop-blur-xl">
         <button
           onClick={() => navigate("/login")}
           className="absolute right-4 top-4 h-8 w-8 rounded-lg bg-background/80 text-foreground/60 hover:text-foreground hover:bg-background grid place-items-center transition-colors duration-200"

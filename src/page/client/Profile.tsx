@@ -96,7 +96,7 @@ const Profile = () => {
   return (
     <div className="w-full">
       <main className="section-wrap py-6 lg:py-10 space-y-6">
-        <section className="rounded-2xl border border-border/50 bg-card card-shadow p-6 md:p-8">
+        <section className="rounded-2xl border border-border/50 bg-card shadow-sm p-6 md:p-8">
           <p className="text-xs uppercase tracking-[0.1em] text-primary font-bold">Customer Profile</p>
           <h1 className="mt-2 text-3xl md:text-4xl font-bold text-foreground">Manage Your Account</h1>
           <p className="mt-3 text-sm text-foreground/70 max-w-2xl">
@@ -116,7 +116,7 @@ const Profile = () => {
         )}
 
         <section className="grid grid-cols-1 xl:grid-cols-[0.8fr_1.2fr] gap-6">
-          <aside className="rounded-2xl border border-border/50 bg-card card-shadow p-6 space-y-5">
+          <aside className="rounded-2xl border border-border/50 bg-card shadow-sm p-6 space-y-5">
             <div className="flex items-center gap-4">
               <div className="h-16 w-16 rounded-xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground grid place-items-center shadow-lg">
                 <UserRound className="h-8 w-8" />
@@ -145,7 +145,7 @@ const Profile = () => {
             </div>
           </aside>
 
-          <form onSubmit={handleSave} className="rounded-2xl border border-border/50 bg-card card-shadow p-6 space-y-4">
+          <form onSubmit={handleSave} className="rounded-2xl border border-border/50 bg-card shadow-sm p-6 space-y-4">
             <h2 className="text-2xl font-bold text-foreground">Edit Profile</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>

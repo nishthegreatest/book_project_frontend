@@ -124,7 +124,7 @@ const Header = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={() => navigate("/cart")}
-              className="relative p-2.5 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 card-shadow hover:card-shadow-lg group"
+              className="relative p-2.5 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 shadow-sm hover:shadow-sm-lg group"
               aria-label="Open cart"
             >
               <ShoppingCart className="h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
@@ -200,7 +200,7 @@ const Header = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -12, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden mt-3 bg-card border border-border/40 rounded-2xl p-3 card-shadow"
+              className="md:hidden mt-3 bg-card border border-border/40 rounded-2xl p-3 shadow-sm"
             >
               <div className="grid grid-cols-2 gap-2">
                 {navItems.map((item) => (

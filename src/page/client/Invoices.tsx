@@ -46,7 +46,7 @@ const Invoices = () => {
   return (
     <div className="w-full">
       <main className="section-wrap py-6 lg:py-10 space-y-6">
-        <section className="rounded-2xl border border-border/50 bg-card card-shadow p-6 md:p-8">
+        <section className="rounded-2xl border border-border/50 bg-card shadow-sm p-6 md:p-8">
           <p className="text-xs uppercase tracking-[0.1em] text-primary font-bold">Invoices</p>
           <h1 className="mt-2 text-3xl md:text-4xl font-bold text-foreground">Your Order History</h1>
           <p className="mt-3 text-sm text-foreground/70 max-w-2xl">
@@ -77,7 +77,7 @@ const Invoices = () => {
         ) : (
           <section className="grid grid-cols-1 xl:grid-cols-2 gap-5">
             {invoices.map((invoice) => (
-              <article key={invoice.id} className="rounded-2xl border border-border/50 bg-card card-shadow p-5">
+              <article key={invoice.id} className="rounded-2xl border border-border/50 bg-card shadow-sm p-5">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="text-[11px] uppercase tracking-[0.08em] text-primary font-medium">Invoice</p>

@@ -166,7 +166,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="rounded-2xl border border-border/50 bg-card card-shadow p-6 md:p-8"
+            className="rounded-2xl border border-border/50 bg-card shadow-sm p-6 md:p-8"
           >
             <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-6 items-center">
               <div>
@@ -181,7 +181,7 @@ const Home = () => {
                 <div className="mt-5 flex flex-wrap items-center gap-3">
                   <Link
                     to="/browse"
-                    className="inline-flex items-center gap-2 h-10 px-4 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-200 card-shadow hover:card-shadow-lg"
+                    className="inline-flex items-center gap-2 h-10 px-4 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-200 shadow-sm hover:shadow-sm-lg"
                   >
                     Browse Products
                     <ArrowRight className="h-4 w-4" />
@@ -214,7 +214,7 @@ const Home = () => {
                 <p className="text-xs uppercase tracking-[0.1em] text-primary font-bold mb-3">Featured Covers</p>
                 <div className="grid grid-cols-3 gap-2">
                   {heroBooks.map((book) => (
-                    <div key={`hero-${book.id}`} className="h-36 rounded-lg border border-border/60 bg-card overflow-hidden card-shadow hover:card-shadow-lg transition-shadow duration-200">
+                    <div key={`hero-${book.id}`} className="h-36 rounded-lg border border-border/60 bg-card overflow-hidden shadow-sm hover:shadow-sm-lg transition-shadow duration-200">
                       <img src={book.book_img} alt={book.title} className="h-full w-full object-cover" />
                     </div>
                   ))}
@@ -250,7 +250,7 @@ const Home = () => {
                 <article
                   key={`arrival-${book.id}`}
                   onClick={() => handleOpenBookDetail(book)}
-                  className="w-[280px] shrink-0 rounded-xl border border-border/50 bg-card card-shadow hover:card-shadow-lg transition-all duration-200 hover:-translate-y-1 cursor-pointer p-3.5"
+                  className="w-[280px] shrink-0 rounded-xl border border-border/50 bg-card shadow-sm hover:shadow-sm-lg transition-all duration-200 hover:-translate-y-1 cursor-pointer p-3.5"
                 >
                   <div className="h-40 rounded-lg overflow-hidden bg-background/60 flex items-center justify-center border border-border/40">
                     <img src={book.book_img} alt={book.title} className="h-full w-auto object-contain" />
@@ -294,7 +294,7 @@ const Home = () => {
                 <article
                   key={`popular-${book.id}`}
                   onClick={() => handleOpenBookDetail(book)}
-                  className="w-[280px] shrink-0 rounded-xl border border-border/50 bg-card card-shadow hover:card-shadow-lg transition-all duration-200 hover:-translate-y-1 cursor-pointer p-3.5"
+                  className="w-[280px] shrink-0 rounded-xl border border-border/50 bg-card shadow-sm hover:shadow-sm-lg transition-all duration-200 hover:-translate-y-1 cursor-pointer p-3.5"
                 >
                   <div className="h-40 rounded-lg overflow-hidden bg-background/60 flex items-center justify-center border border-border/40">
                     <img src={book.book_img} alt={book.title} className="h-full w-auto object-contain" />
@@ -312,7 +312,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section id="catalogue" className="rounded-2xl border border-border/50 bg-card card-shadow p-6 md:p-8 scroll-mt-32">
+        <section id="catalogue" className="rounded-2xl border border-border/50 bg-card shadow-sm p-6 md:p-8 scroll-mt-32">
           <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.1em] text-primary font-bold mb-3">
             <Sparkles className="h-3.5 w-3.5" />
             Curated Collection
@@ -347,7 +347,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section id="help" className="rounded-2xl border border-border/50 bg-card card-shadow p-6 md:p-8 scroll-mt-32">
+        <section id="help" className="rounded-2xl border border-border/50 bg-card shadow-sm p-6 md:p-8 scroll-mt-32">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <p className="text-xs uppercase tracking-[0.1em] text-primary font-bold">Need Help?</p>
@@ -355,7 +355,7 @@ const Home = () => {
               <p className="text-foreground/70 mt-2 text-sm">Our team can help with purchases, order status, and account issues.</p>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
-              <Link to="/login" className="h-10 px-5 rounded-lg text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center transition-all duration-200 card-shadow hover:card-shadow-lg">
+              <Link to="/login" className="h-10 px-5 rounded-lg text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center transition-all duration-200 shadow-sm hover:shadow-sm-lg">
                 Contact Support
               </Link>
               <Link to="/browse" className="h-10 px-5 rounded-lg text-sm font-medium border border-border/50 text-foreground hover:bg-background/80 inline-flex items-center transition-all duration-200">
@@ -383,7 +383,7 @@ const Home = () => {
         <p className="text-base text-foreground/80">{welcomeMessage}</p>
         <button
           onClick={() => setWelcomeMessage("")}
-          className="w-full h-10 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-200 card-shadow hover:card-shadow-lg"
+          className="w-full h-10 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-200 shadow-sm hover:shadow-sm-lg"
         >
           Start Exploring
         </button>

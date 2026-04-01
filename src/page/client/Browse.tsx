@@ -119,7 +119,7 @@ const Browse = () => {
     <div className="w-full">
       <main className="section-wrap py-6 lg:py-10 space-y-6">
         <section id="browse" className="scroll-mt-32">
-          <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-card card-shadow p-6 md:p-8">
+          <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-card shadow-sm p-6 md:p-8">
             <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
             <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-accent/5 blur-3xl pointer-events-none" />
 

@@ -88,7 +88,7 @@ const Favorites = () => {
   return (
     <div className="w-full">
       <main className="section-wrap py-6 lg:py-10 space-y-6">
-        <section className="rounded-2xl border border-border/50 bg-card card-shadow p-6 md:p-8">
+        <section className="rounded-2xl border border-border/50 bg-card shadow-sm p-6 md:p-8">
           <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.1em] text-accent font-bold mb-3">
             <Sparkles className="h-3.5 w-3.5" />
             Your Collection

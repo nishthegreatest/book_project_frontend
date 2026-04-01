@@ -192,19 +192,9 @@
 }
 
 @layer utilities {
-  /* Premium card shadow - refined and subtle */
-  .card-shadow {
-    @apply shadow-[0_2px_8px_rgba(0,0,0,0.04),0_4px_16px_rgba(0,0,0,0.08)];
-  }
-
-  /* Elevated shadow for hover states */
-  .card-shadow-lg {
-    @apply shadow-[0_12px_24px_rgba(0,0,0,0.12),0_20px_40px_rgba(0,0,0,0.08)];
-  }
-
   /* Premium glass effect */
   .glass-surface {
-    @apply bg-background/60 backdrop-blur-md border border-border/40 card-shadow;
+    @apply bg-background/60 backdrop-blur-md border border-border/40 shadow-sm;
   }
 
   /* Section container */

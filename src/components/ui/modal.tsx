@@ -53,7 +53,7 @@ const Modal = ({
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
-                        className={`relative w-full ${maxWidthClass} bg-card border border-border/50 rounded-2xl card-shadow-lg overflow-hidden`}
+                        className={`relative w-full ${maxWidthClass} bg-card border border-border/50 rounded-2xl shadow-md overflow-hidden`}
                         onClick={(e) => e.stopPropagation()}
                     >
                         {showHeader && (

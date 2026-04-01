@@ -186,7 +186,7 @@ const Cart = () => {
   return (
     <div className="w-full">
       <main className="section-wrap py-6 lg:py-10 space-y-6">
-        <section className="rounded-2xl border border-border/50 bg-card card-shadow p-6 md:p-8">
+        <section className="rounded-2xl border border-border/50 bg-card shadow-sm p-6 md:p-8">
           <p className="text-xs uppercase tracking-[0.1em] text-primary font-bold">Checkout</p>
           <h1 className="mt-2 text-3xl md:text-4xl font-bold text-foreground">Your Cart Order</h1>
           <p className="mt-3 text-sm text-foreground/70 max-w-2xl">
@@ -260,7 +260,7 @@ const Cart = () => {
                 </div>
               ) : (
                 items.map((item: CartItem) => (
-                  <article key={item.book_id} className="rounded-2xl border border-border/50 bg-card card-shadow p-4">
+                  <article key={item.book_id} className="rounded-2xl border border-border/50 bg-card shadow-sm p-4">
                     <div className="flex flex-col sm:flex-row gap-4">
                       <div className="h-28 w-full sm:w-24 rounded-lg border border-border/50 bg-background/50 overflow-hidden shrink-0 flex items-center justify-center">
                         <img src={item.book_img} alt={item.title} className="h-full w-full object-cover" />
@@ -307,7 +307,7 @@ const Cart = () => {
             </div>
 
             <aside className="space-y-4">
-              <div className="rounded-2xl border border-border/50 bg-card card-shadow p-5">
+              <div className="rounded-2xl border border-border/50 bg-card shadow-sm p-5">
                 <h2 className="text-xl font-bold text-foreground">Order Summary</h2>
                 <div className="mt-4 space-y-2 text-sm">
                   <div className="flex items-center justify-between text-foreground/70">
@@ -329,7 +329,7 @@ const Cart = () => {
                 </div>
               </div>
 
-              <form onSubmit={handlePlaceOrder} className="rounded-2xl border border-border/50 bg-card card-shadow p-5 space-y-3">
+              <form onSubmit={handlePlaceOrder} className="rounded-2xl border border-border/50 bg-card shadow-sm p-5 space-y-3">
                 <h2 className="text-xl font-bold text-foreground">Checkout Details</h2>
                 <div className="grid grid-cols-1 gap-2.5">
                   <input
