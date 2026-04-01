@@ -186,58 +186,58 @@ const Cart = () => {
   return (
     <div className="w-full">
       <main className="section-wrap py-6 lg:py-10 space-y-6">
-        <section className="rounded-[2.25rem] border border-white/70 bg-gradient-to-br from-white/95 via-cyan-50/40 to-emerald-100/35 p-6 md:p-8 shadow-[0_24px_60px_rgba(15,23,42,0.12)]">
-          <p className="text-xs uppercase tracking-[0.2em] text-emerald-700 font-bold">Checkout</p>
-          <h1 className="mt-2 text-3xl md:text-4xl font-black text-slate-900">Your Cart Order</h1>
-          <p className="mt-2 text-sm text-slate-600 max-w-2xl">
+        <section className="rounded-2xl border border-border/50 bg-card card-shadow p-6 md:p-8">
+          <p className="text-xs uppercase tracking-[0.1em] text-primary font-bold">Checkout</p>
+          <h1 className="mt-2 text-3xl md:text-4xl font-bold text-foreground">Your Cart Order</h1>
+          <p className="mt-3 text-sm text-foreground/70 max-w-2xl">
             Review books, set quantity, and place your order in one clean checkout flow.
           </p>
         </section>
 
         {loadingMessage && (
-          <div className="rounded-xl border border-sky-200 bg-sky-50 px-4 py-3 text-sm font-semibold text-sky-700">
+          <div className="rounded-lg border border-primary/30 bg-primary/5 px-4 py-3 text-sm font-medium text-primary">
             {loadingMessage}
           </div>
         )}
         {orderMessage && (
-          <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700">
+          <div className="rounded-lg border border-success/30 bg-success/5 px-4 py-3 text-sm font-medium text-success">
             {orderMessage}
           </div>
         )}
         {checkoutError && (
-          <div className="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700">
+          <div className="rounded-lg border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm font-medium text-destructive">
             {checkoutError}
           </div>
         )}
 
         {!isLoggedIn ? (
-          <section className="rounded-3xl border border-dashed border-slate-300 bg-white/80 p-8 text-center">
-            <ShoppingBag className="h-8 w-8 text-slate-400 mx-auto" />
-            <h3 className="mt-3 text-xl font-bold text-slate-900">Login required</h3>
-            <p className="mt-1 text-sm text-slate-600">Sign in as a customer to use your cart and checkout.</p>
+          <section className="rounded-2xl border border-dashed border-border/50 bg-background/50 p-8 text-center">
+            <ShoppingBag className="h-8 w-8 text-foreground/40 mx-auto" />
+            <h3 className="mt-3 text-xl font-bold text-foreground">Login required</h3>
+            <p className="mt-1 text-sm text-foreground/70">Sign in as a customer to use your cart and checkout.</p>
             <Link
               to="/login"
-              className="inline-flex mt-5 h-10 px-5 items-center rounded-xl bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800"
+              className="inline-flex mt-5 h-10 px-6 items-center rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-200"
             >
               Go to Login
             </Link>
           </section>
         ) : isPlaced && placedInvoice ? (
-          <section className="rounded-3xl border border-emerald-200 bg-white p-8 text-center shadow-sm">
-            <CheckCircle2 className="h-12 w-12 text-emerald-600 mx-auto" />
-            <h2 className="mt-3 text-2xl font-black text-slate-900">Order Confirmed</h2>
-            <p className="mt-2 text-slate-600">Thanks for your purchase. Your books are being prepared for shipping.</p>
-            <p className="mt-2 text-sm font-semibold text-slate-700">Invoice ID: {placedInvoice.id}</p>
+          <section className="rounded-2xl border border-success/30 bg-success/5 p-8 text-center">
+            <CheckCircle2 className="h-12 w-12 text-success mx-auto" />
+            <h2 className="mt-3 text-2xl font-bold text-foreground">Order Confirmed</h2>
+            <p className="mt-2 text-foreground/70">Thanks for your purchase. Your books are being prepared for shipping.</p>
+            <p className="mt-2 text-sm font-medium text-foreground/80">Invoice ID: {placedInvoice.id}</p>
             <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/invoices"
-                className="inline-flex h-11 px-6 items-center rounded-xl bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800"
+                className="inline-flex h-10 px-6 items-center rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-200"
               >
                 View Invoices
               </Link>
               <Link
                 to="/browse"
-                className="inline-flex h-11 px-6 items-center rounded-xl border border-slate-200 text-slate-700 text-sm font-semibold hover:bg-slate-50"
+                className="inline-flex h-10 px-6 items-center rounded-lg border border-border/50 text-foreground text-sm font-medium hover:bg-background/80 transition-all duration-200"
               >
                 Continue Shopping
               </Link>
@@ -247,41 +247,41 @@ const Cart = () => {
           <section className="grid grid-cols-1 xl:grid-cols-[1.15fr_0.85fr] gap-6">
             <div className="space-y-4">
               {items.length === 0 ? (
-                <div className="rounded-3xl border border-dashed border-slate-300 bg-white/80 p-8 text-center">
-                  <ShoppingBag className="h-8 w-8 text-slate-400 mx-auto" />
-                  <h3 className="mt-3 text-xl font-bold text-slate-900">Your cart is empty</h3>
-                  <p className="mt-1 text-sm text-slate-600">Add books from the shop to continue checkout.</p>
+                <div className="rounded-2xl border border-dashed border-border/50 bg-background/50 p-8 text-center">
+                  <ShoppingBag className="h-8 w-8 text-foreground/40 mx-auto" />
+                  <h3 className="mt-3 text-xl font-bold text-foreground">Your cart is empty</h3>
+                  <p className="mt-1 text-sm text-foreground/70">Add books from the shop to continue checkout.</p>
                   <Link
                     to="/browse"
-                    className="inline-flex mt-5 h-10 px-5 items-center rounded-xl bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800"
+                    className="inline-flex mt-5 h-10 px-6 items-center rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-200"
                   >
                     Browse Books
                   </Link>
                 </div>
               ) : (
                 items.map((item: CartItem) => (
-                  <article key={item.book_id} className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
+                  <article key={item.book_id} className="rounded-2xl border border-border/50 bg-card card-shadow p-4">
                     <div className="flex flex-col sm:flex-row gap-4">
-                      <div className="h-28 w-full sm:w-24 rounded-xl border border-slate-200 bg-slate-50 overflow-hidden shrink-0 flex items-center justify-center">
+                      <div className="h-28 w-full sm:w-24 rounded-lg border border-border/50 bg-background/50 overflow-hidden shrink-0 flex items-center justify-center">
                         <img src={item.book_img} alt={item.title} className="h-full w-full object-cover" />
                       </div>
                       <div className="flex-1">
-                        <p className="text-[11px] uppercase tracking-[0.1em] font-bold text-orange-700">{item.category_name}</p>
-                        <h3 className="text-lg font-bold text-slate-900 line-clamp-2">{item.title}</h3>
-                        <p className="text-sm text-slate-500">by {item.author_name}</p>
+                        <p className="text-[11px] uppercase tracking-[0.08em] font-bold text-primary">{item.category_name}</p>
+                        <h3 className="text-lg font-bold text-foreground line-clamp-2">{item.title}</h3>
+                        <p className="text-sm text-foreground/60">by {item.author_name}</p>
                         <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
-                          <div className="inline-flex items-center rounded-xl border border-slate-200 bg-white">
+                          <div className="inline-flex items-center rounded-lg border border-border/50 bg-background">
                             <button
                               onClick={() => void updateQty(item.book_id, item.quantity - 1)}
-                              className="h-9 w-9 grid place-items-center text-slate-600 hover:text-slate-900"
+                              className="h-9 w-9 grid place-items-center text-foreground/60 hover:text-foreground transition-colors"
                               aria-label="Decrease quantity"
                             >
                               <Minus className="h-4 w-4" />
                             </button>
-                            <span className="w-10 text-center text-sm font-semibold text-slate-800">{item.quantity}</span>
+                            <span className="w-10 text-center text-sm font-medium text-foreground">{item.quantity}</span>
                             <button
                               onClick={() => void updateQty(item.book_id, item.quantity + 1)}
-                              className="h-9 w-9 grid place-items-center text-slate-600 hover:text-slate-900"
+                              className="h-9 w-9 grid place-items-center text-foreground/60 hover:text-foreground transition-colors"
                               aria-label="Increase quantity"
                             >
                               <Plus className="h-4 w-4" />
@@ -289,10 +289,10 @@ const Cart = () => {
                           </div>
 
                           <div className="flex items-center gap-3">
-                            <p className="text-xl font-black text-slate-900">${Number(item.line_total).toFixed(2)}</p>
+                            <p className="text-xl font-bold text-foreground">${Number(item.line_total).toFixed(2)}</p>
                             <button
                               onClick={() => void removeItem(item.book_id)}
-                              className="h-9 w-9 rounded-lg border border-slate-200 grid place-items-center text-slate-500 hover:text-rose-600 hover:border-rose-200"
+                              className="h-9 w-9 rounded-lg border border-border/50 grid place-items-center text-foreground/60 hover:text-destructive hover:border-destructive/40 transition-all duration-200"
                               aria-label="Remove item"
                             >
                               <Trash2 className="h-4 w-4" />
@@ -307,79 +307,79 @@ const Cart = () => {
             </div>
 
             <aside className="space-y-4">
-              <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
-                <h2 className="text-xl font-black text-slate-900">Order Summary</h2>
+              <div className="rounded-2xl border border-border/50 bg-card card-shadow p-5">
+                <h2 className="text-xl font-bold text-foreground">Order Summary</h2>
                 <div className="mt-4 space-y-2 text-sm">
-                  <div className="flex items-center justify-between text-slate-600">
+                  <div className="flex items-center justify-between text-foreground/70">
                     <span>Subtotal</span>
                     <span>${summary.subtotal.toFixed(2)}</span>
                   </div>
-                  <div className="flex items-center justify-between text-slate-600">
+                  <div className="flex items-center justify-between text-foreground/70">
                     <span>Shipping</span>
                     <span>{summary.shipping === 0 ? "Free" : `$${summary.shipping.toFixed(2)}`}</span>
                   </div>
-                  <div className="flex items-center justify-between text-slate-600">
+                  <div className="flex items-center justify-between text-foreground/70">
                     <span>Tax</span>
                     <span>${summary.tax.toFixed(2)}</span>
                   </div>
-                  <div className="pt-3 mt-3 border-t border-slate-200 flex items-center justify-between">
-                    <span className="text-base font-semibold text-slate-900">Total</span>
-                    <span className="text-2xl font-black text-slate-900">${summary.total.toFixed(2)}</span>
+                  <div className="pt-3 mt-3 border-t border-border/30 flex items-center justify-between">
+                    <span className="text-base font-semibold text-foreground">Total</span>
+                    <span className="text-2xl font-bold text-foreground">${summary.total.toFixed(2)}</span>
                   </div>
                 </div>
               </div>
 
-              <form onSubmit={handlePlaceOrder} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm space-y-3">
-                <h2 className="text-xl font-black text-slate-900">Checkout Details</h2>
-                <div className="grid grid-cols-1 gap-2">
+              <form onSubmit={handlePlaceOrder} className="rounded-2xl border border-border/50 bg-card card-shadow p-5 space-y-3">
+                <h2 className="text-xl font-bold text-foreground">Checkout Details</h2>
+                <div className="grid grid-cols-1 gap-2.5">
                   <input
                     value={form.fullName}
                     onChange={(e) => setForm((prev) => ({ ...prev, fullName: e.target.value }))}
                     placeholder="Full name"
-                    className="h-10 rounded-xl border border-slate-200 px-3 text-sm outline-none focus:ring-2 focus:ring-emerald-200"
+                    className="h-10 rounded-lg border border-border/50 bg-background px-3 text-sm text-foreground placeholder:text-foreground/50 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
                   />
                   <input
                     value={form.email}
                     onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
                     placeholder="Email address"
-                    className="h-10 rounded-xl border border-slate-200 px-3 text-sm outline-none focus:ring-2 focus:ring-emerald-200"
+                    className="h-10 rounded-lg border border-border/50 bg-background px-3 text-sm text-foreground placeholder:text-foreground/50 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
                   />
                   <input
                     value={form.phone}
                     onChange={(e) => setForm((prev) => ({ ...prev, phone: e.target.value }))}
                     placeholder="Phone number"
-                    className="h-10 rounded-xl border border-slate-200 px-3 text-sm outline-none focus:ring-2 focus:ring-emerald-200"
+                    className="h-10 rounded-lg border border-border/50 bg-background px-3 text-sm text-foreground placeholder:text-foreground/50 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
                   />
                   <input
                     value={form.address}
                     onChange={(e) => setForm((prev) => ({ ...prev, address: e.target.value }))}
                     placeholder="Street address"
-                    className="h-10 rounded-xl border border-slate-200 px-3 text-sm outline-none focus:ring-2 focus:ring-emerald-200"
+                    className="h-10 rounded-lg border border-border/50 bg-background px-3 text-sm text-foreground placeholder:text-foreground/50 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
                   />
                   <div className="grid grid-cols-2 gap-2">
                     <input
                       value={form.city}
                       onChange={(e) => setForm((prev) => ({ ...prev, city: e.target.value }))}
                       placeholder="City"
-                      className="h-10 rounded-xl border border-slate-200 px-3 text-sm outline-none focus:ring-2 focus:ring-emerald-200"
+                      className="h-10 rounded-lg border border-border/50 bg-background px-3 text-sm text-foreground placeholder:text-foreground/50 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
                     />
                     <input
                       value={form.country}
                       onChange={(e) => setForm((prev) => ({ ...prev, country: e.target.value }))}
                       placeholder="Country"
-                      className="h-10 rounded-xl border border-slate-200 px-3 text-sm outline-none focus:ring-2 focus:ring-emerald-200"
+                      className="h-10 rounded-lg border border-border/50 bg-background px-3 text-sm text-foreground placeholder:text-foreground/50 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
                     />
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-slate-200 p-3">
-                  <p className="text-sm font-semibold text-slate-800 mb-2">Payment</p>
+                <div className="rounded-lg border border-border/50 bg-background/50 p-3">
+                  <p className="text-sm font-medium text-foreground mb-2.5">Payment</p>
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       type="button"
                       onClick={() => setForm((prev) => ({ ...prev, paymentMethod: "card" }))}
-                      className={`h-10 rounded-lg border text-sm font-semibold inline-flex items-center justify-center gap-2 ${
-                        form.paymentMethod === "card" ? "border-slate-900 bg-slate-900 text-white" : "border-slate-200 text-slate-700"
+                      className={`h-10 rounded-lg border text-sm font-medium inline-flex items-center justify-center gap-2 transition-all duration-200 ${
+                        form.paymentMethod === "card" ? "border-primary bg-primary text-primary-foreground" : "border-border/50 text-foreground hover:bg-background/50"
                       }`}
                     >
                       <CreditCard className="h-4 w-4" />
@@ -388,8 +388,8 @@ const Cart = () => {
                     <button
                       type="button"
                       onClick={() => setForm((prev) => ({ ...prev, paymentMethod: "cod" }))}
-                      className={`h-10 rounded-lg border text-sm font-semibold ${
-                        form.paymentMethod === "cod" ? "border-slate-900 bg-slate-900 text-white" : "border-slate-200 text-slate-700"
+                      className={`h-10 rounded-lg border text-sm font-medium transition-all duration-200 ${
+                        form.paymentMethod === "cod" ? "border-primary bg-primary text-primary-foreground" : "border-border/50 text-foreground hover:bg-background/50"
                       }`}
                     >
                       Cash
@@ -399,12 +399,12 @@ const Cart = () => {
 
                 <button
                   type="submit"
-                  className="h-11 w-full rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 inline-flex items-center justify-center gap-2"
+                  className="h-10 w-full rounded-lg bg-success text-success-foreground font-medium hover:bg-success/90 inline-flex items-center justify-center gap-2 transition-all duration-200"
                 >
                   <ShieldCheck className="h-4 w-4" />
                   Place Order
                 </button>
-                <p className="text-xs text-slate-500 inline-flex items-center gap-1.5">
+                <p className="text-xs text-foreground/60 inline-flex items-center gap-1.5">
                   <Truck className="h-3.5 w-3.5" />
                   Secure checkout and tracked shipping.
                 </p>

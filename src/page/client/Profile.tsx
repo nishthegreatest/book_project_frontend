@@ -96,119 +96,119 @@ const Profile = () => {
   return (
     <div className="w-full">
       <main className="section-wrap py-6 lg:py-10 space-y-6">
-        <section className="rounded-[2.25rem] border border-white/70 bg-gradient-to-br from-white/95 via-orange-50/45 to-amber-100/40 p-6 md:p-8 shadow-[0_24px_60px_rgba(15,23,42,0.12)]">
-          <p className="text-xs uppercase tracking-[0.2em] text-orange-700 font-bold">Customer Profile</p>
-          <h1 className="mt-2 text-3xl md:text-4xl font-black text-slate-900">Manage Your Account</h1>
-          <p className="mt-2 text-sm text-slate-600 max-w-2xl">
+        <section className="rounded-2xl border border-border/50 bg-card card-shadow p-6 md:p-8">
+          <p className="text-xs uppercase tracking-[0.1em] text-primary font-bold">Customer Profile</p>
+          <h1 className="mt-2 text-3xl md:text-4xl font-bold text-foreground">Manage Your Account</h1>
+          <p className="mt-3 text-sm text-foreground/70 max-w-2xl">
             Keep your personal details up to date so checkout and invoice records stay accurate.
           </p>
         </section>
 
         {successMessage && (
-          <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700">
+          <div className="rounded-lg border border-success/30 bg-success/5 px-4 py-3 text-sm font-medium text-success">
             {successMessage}
           </div>
         )}
         {errorMessage && (
-          <div className="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700">
+          <div className="rounded-lg border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm font-medium text-destructive">
             {errorMessage}
           </div>
         )}
 
         <section className="grid grid-cols-1 xl:grid-cols-[0.8fr_1.2fr] gap-6">
-          <aside className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm space-y-5">
+          <aside className="rounded-2xl border border-border/50 bg-card card-shadow p-6 space-y-5">
             <div className="flex items-center gap-4">
-              <div className="h-16 w-16 rounded-3xl bg-gradient-to-br from-orange-500 to-amber-400 text-white grid place-items-center shadow-lg shadow-orange-200">
+              <div className="h-16 w-16 rounded-xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground grid place-items-center shadow-lg">
                 <UserRound className="h-8 w-8" />
               </div>
               <div>
-                <h2 className="text-2xl font-black text-slate-900">
+                <h2 className="text-xl font-bold text-foreground">
                   {profile.first_name} {profile.last_name}
                 </h2>
-                <p className="text-sm text-slate-500">{profile.email}</p>
+                <p className="text-sm text-foreground/60">{profile.email}</p>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-3 text-sm">
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-[11px] uppercase tracking-[0.12em] text-slate-500 font-semibold">Invoices</p>
-                <p className="mt-1 text-2xl font-black text-slate-900">{invoices.length}</p>
+            <div className="grid grid-cols-1 gap-3">
+              <div className="rounded-lg border border-border/50 bg-background/50 p-4">
+                <p className="text-[11px] uppercase tracking-[0.08em] text-foreground/60 font-medium">Invoices</p>
+                <p className="mt-2 text-2xl font-bold text-foreground">{invoices.length}</p>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-[11px] uppercase tracking-[0.12em] text-slate-500 font-semibold">Phone</p>
-                <p className="mt-1 text-base font-semibold text-slate-900">{profile.phone || "Not set"}</p>
+              <div className="rounded-lg border border-border/50 bg-background/50 p-4">
+                <p className="text-[11px] uppercase tracking-[0.08em] text-foreground/60 font-medium">Phone</p>
+                <p className="mt-2 text-base font-medium text-foreground">{profile.phone || "Not set"}</p>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-[11px] uppercase tracking-[0.12em] text-slate-500 font-semibold">Address</p>
-                <p className="mt-1 text-base font-semibold text-slate-900">{profile.address || "Not set"}</p>
+              <div className="rounded-lg border border-border/50 bg-background/50 p-4">
+                <p className="text-[11px] uppercase tracking-[0.08em] text-foreground/60 font-medium">Address</p>
+                <p className="mt-2 text-sm font-medium text-foreground">{profile.address || "Not set"}</p>
               </div>
             </div>
           </aside>
 
-          <form onSubmit={handleSave} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm space-y-4">
-            <h2 className="text-2xl font-black text-slate-900">Edit Profile</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <form onSubmit={handleSave} className="rounded-2xl border border-border/50 bg-card card-shadow p-6 space-y-4">
+            <h2 className="text-2xl font-bold text-foreground">Edit Profile</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs uppercase tracking-[0.12em] text-slate-500 font-semibold">First Name</label>
+                <label className="text-xs uppercase tracking-[0.08em] text-foreground/60 font-medium">First Name</label>
                 <div className="relative mt-2">
-                  <UserRound className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                  <UserRound className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground/40" />
                   <input
                     value={form.first_name}
                     onChange={(e) => setForm((prev) => ({ ...prev, first_name: e.target.value }))}
-                    className="h-11 w-full rounded-xl border border-slate-200 pl-10 pr-3 text-sm outline-none focus:ring-2 focus:ring-orange-200"
+                    className="h-10 w-full rounded-lg border border-border/50 bg-background px-3 pl-10 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
                   />
                 </div>
               </div>
               <div>
-                <label className="text-xs uppercase tracking-[0.12em] text-slate-500 font-semibold">Last Name</label>
+                <label className="text-xs uppercase tracking-[0.08em] text-foreground/60 font-medium">Last Name</label>
                 <div className="relative mt-2">
-                  <UserRound className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                  <UserRound className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground/40" />
                   <input
                     value={form.last_name}
                     onChange={(e) => setForm((prev) => ({ ...prev, last_name: e.target.value }))}
-                    className="h-11 w-full rounded-xl border border-slate-200 pl-10 pr-3 text-sm outline-none focus:ring-2 focus:ring-orange-200"
+                    className="h-10 w-full rounded-lg border border-border/50 bg-background px-3 pl-10 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
                   />
                 </div>
               </div>
               <div>
-                <label className="text-xs uppercase tracking-[0.12em] text-slate-500 font-semibold">Email</label>
+                <label className="text-xs uppercase tracking-[0.08em] text-foreground/60 font-medium">Email</label>
                 <div className="relative mt-2">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground/40" />
                   <input
                     value={form.email}
                     onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
-                    className="h-11 w-full rounded-xl border border-slate-200 pl-10 pr-3 text-sm outline-none focus:ring-2 focus:ring-orange-200"
+                    className="h-10 w-full rounded-lg border border-border/50 bg-background px-3 pl-10 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
                   />
                 </div>
               </div>
               <div>
-                <label className="text-xs uppercase tracking-[0.12em] text-slate-500 font-semibold">Phone</label>
+                <label className="text-xs uppercase tracking-[0.08em] text-foreground/60 font-medium">Phone</label>
                 <div className="relative mt-2">
-                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground/40" />
                   <input
                     value={form.phone}
                     onChange={(e) => setForm((prev) => ({ ...prev, phone: e.target.value }))}
-                    className="h-11 w-full rounded-xl border border-slate-200 pl-10 pr-3 text-sm outline-none focus:ring-2 focus:ring-orange-200"
+                    className="h-10 w-full rounded-lg border border-border/50 bg-background px-3 pl-10 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
                   />
                 </div>
               </div>
             </div>
 
             <div>
-              <label className="text-xs uppercase tracking-[0.12em] text-slate-500 font-semibold">Address</label>
+              <label className="text-xs uppercase tracking-[0.08em] text-foreground/60 font-medium">Address</label>
               <div className="relative mt-2">
-                <MapPin className="absolute left-3 top-3.5 h-4 w-4 text-slate-400" />
+                <MapPin className="absolute left-3 top-3.5 h-4 w-4 text-foreground/40" />
                 <textarea
                   value={form.address}
                   onChange={(e) => setForm((prev) => ({ ...prev, address: e.target.value }))}
-                  className="min-h-28 w-full rounded-xl border border-slate-200 pl-10 pr-3 py-3 text-sm outline-none focus:ring-2 focus:ring-orange-200"
+                  className="min-h-24 w-full rounded-lg border border-border/50 bg-background px-3 pl-10 py-2.5 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
                 />
               </div>
             </div>
 
             <button
               type="submit"
-              className="h-11 px-5 rounded-xl bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800 inline-flex items-center gap-2"
+              className="h-10 px-5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 inline-flex items-center gap-2 transition-all duration-200"
             >
               <Save className="h-4 w-4" />
               Save Changes

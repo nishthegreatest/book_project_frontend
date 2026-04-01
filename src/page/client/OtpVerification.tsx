@@ -79,28 +79,28 @@ const OtpVerification = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-orange-100 px-4 py-8 relative overflow-hidden">
-      <div className="absolute -top-16 -left-16 w-72 h-72 bg-orange-300/30 rounded-full blur-3xl" />
-      <div className="absolute -bottom-16 -right-16 w-80 h-80 bg-amber-300/25 rounded-full blur-3xl" />
+    <div className="min-h-screen flex items-center justify-center bg-background px-4 py-8 relative overflow-hidden">
+      <div className="absolute -top-16 -left-16 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute -bottom-16 -right-16 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
 
-      <div className="relative w-full max-w-md bg-white/90 border border-white/80 rounded-3xl shadow-[0_24px_60px_rgba(15,23,42,0.2)] p-6 md:p-8 backdrop-blur-xl">
+      <div className="relative w-full max-w-md bg-card border border-border/50 rounded-2xl card-shadow p-6 md:p-8 backdrop-blur-xl">
         <button
           onClick={() => navigate("/login")}
-          className="absolute right-4 top-4 h-8 w-8 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900 grid place-items-center"
+          className="absolute right-4 top-4 h-8 w-8 rounded-lg bg-background/80 text-foreground/60 hover:text-foreground hover:bg-background grid place-items-center transition-colors duration-200"
           aria-label="Close"
         >
           <X className="h-4 w-4" />
         </button>
 
         <div className="flex items-center justify-center gap-2 mb-6">
-          <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center shadow-md">
+          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground flex items-center justify-center shadow-md">
             <BookOpen className="h-5 w-5" />
           </div>
-          <span className="text-xl font-bold text-slate-900">Bookly</span>
+          <span className="text-xl font-bold text-foreground">Bookly</span>
         </div>
 
-        <h1 className="text-3xl font-bold text-slate-900 text-center">Verify OTP</h1>
-        <p className="text-center text-sm text-slate-600 mt-1">
+        <h1 className="text-3xl font-bold text-foreground text-center">Verify OTP</h1>
+        <p className="text-center text-sm text-foreground/70 mt-2">
           Enter your reset code sent to <span className="font-semibold">{email || "your email"}</span>
         </p>
 
@@ -109,7 +109,7 @@ const OtpVerification = () => {
             {otpDigits.map((digit, idx) => (
               <div
                 key={idx}
-                className="h-10 w-10 rounded-xl bg-slate-900 text-white text-lg font-bold grid place-items-center"
+                className="h-10 w-10 rounded-lg bg-primary text-primary-foreground text-lg font-bold grid place-items-center"
               >
                 {digit || "•"}
               </div>
@@ -122,7 +122,7 @@ const OtpVerification = () => {
             maxLength={OTP_LENGTH}
             value={otp}
             onChange={(e) => setOtp(e.target.value.replace(/\D/g, "").slice(0, OTP_LENGTH))}
-            className="w-full h-11 rounded-xl border border-slate-200 bg-white px-4 text-center text-slate-900 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-orange-300/40"
+            className="w-full h-10 rounded-lg border border-border/50 bg-background px-4 text-center text-foreground placeholder:text-foreground/50 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
             placeholder={`Enter ${OTP_LENGTH}-digit code`}
             required
           />
@@ -131,7 +131,7 @@ const OtpVerification = () => {
             type="password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
-            className="w-full h-11 rounded-xl border border-slate-200 bg-white px-4 text-slate-900 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-orange-300/40"
+            className="w-full h-10 rounded-lg border border-border/50 bg-background px-4 text-foreground placeholder:text-foreground/50 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
             placeholder="New password"
             required
           />
@@ -139,18 +139,18 @@ const OtpVerification = () => {
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full h-11 rounded-xl border border-slate-200 bg-white px-4 text-slate-900 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-orange-300/40"
+            className="w-full h-10 rounded-lg border border-border/50 bg-background px-4 text-foreground placeholder:text-foreground/50 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200"
             placeholder="Confirm new password"
             required
           />
 
-          {error && <p className="text-xs text-red-600 text-center font-semibold">{error}</p>}
-          {successMessage && <p className="text-xs text-emerald-700 text-center font-semibold">{successMessage}</p>}
+          {error && <p className="text-xs text-destructive text-center font-semibold">{error}</p>}
+          {successMessage && <p className="text-xs text-success text-center font-semibold">{successMessage}</p>}
 
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full h-11 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold hover:opacity-90 disabled:opacity-70 inline-flex items-center justify-center gap-2"
+            className="w-full h-10 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 disabled:opacity-70 inline-flex items-center justify-center gap-2 transition-all duration-200"
           >
             {isLoading ? (
               <>
@@ -163,16 +163,16 @@ const OtpVerification = () => {
           </button>
         </form>
 
-        <div className="text-center mt-3 text-xs text-slate-600">
+        <div className="text-center mt-3 text-xs text-foreground/70">
           Didn&apos;t get code?{" "}
-          <button type="button" onClick={() => void handleResend()} disabled={isLoading} className="font-semibold text-orange-600 underline">
+          <button type="button" onClick={() => void handleResend()} disabled={isLoading} className="font-semibold text-primary hover:text-primary/90 underline">
             Resend
           </button>
         </div>
         <button
           type="button"
           onClick={() => navigate("/login")}
-          className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900"
+          className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-foreground/70 hover:text-foreground transition-colors duration-200"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           Back to login
