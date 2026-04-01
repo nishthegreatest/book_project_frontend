@@ -457,7 +457,7 @@
 
   /* Smooth page transitions */
   .page-enter {
-    @apply animate-blur-in;
+    animation: blur-in 0.6s ease-out;
   }
 
   .page-exit {
