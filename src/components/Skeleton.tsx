@@ -6,7 +6,7 @@ interface SkeletonProps {
 }
 
 export function Skeleton({ className = "", variant = "rect" }: SkeletonProps) {
-  const baseClasses = "animate-shimmer bg-muted rounded";
+  const baseClasses = "bg-muted rounded";
 
   const variantClasses: Record<string, string> = {
     text: "h-4 w-full rounded",

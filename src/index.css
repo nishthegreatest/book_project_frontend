@@ -278,14 +278,7 @@
     }
   }
 
-  @keyframes shimmer {
-    0%, 100% {
-      background-position: -1000px 0;
-    }
-    100% {
-      background-position: 1000px 0;
-    }
-  }
+
 
   @keyframes float {
     0%, 100% {
@@ -325,11 +318,7 @@
     animation: scaleIn 0.4s ease-out;
   }
 
-  .animate-shimmer {
-    background: linear-gradient(90deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.1) 100%);
-    background-size: 1000px 100%;
-    animation: shimmer 2s infinite;
-  }
+
 
   .animate-float {
     animation: float 3s ease-in-out infinite;
@@ -458,7 +447,7 @@
 
   /* Loading skeleton with shimmer */
   .skeleton-shimmer {
-    @apply animate-shimmer bg-muted relative overflow-hidden;
+    @apply bg-muted relative overflow-hidden;
   }
 
   /* Focus visible states */
@@ -472,7 +461,16 @@
   }
 
   .page-exit {
-    @apply animate-fade-out;
+    animation: fadeOut 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
 
   /* Premium text effects */
