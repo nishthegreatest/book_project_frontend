@@ -246,11 +246,15 @@ const Home = () => {
 
           <div className="overflow-x-auto pb-2 [scrollbar-width:thin] [scrollbar-color:var(--color-primary)_transparent]">
             <div className="flex gap-4 min-w-max pr-2">
-              {newArrivals.slice(0, 10).map((book) => (
-                <article
+              {newArrivals.slice(0, 10).map((book, idx) => (
+                <motion.article
                   key={`arrival-${book.id}`}
                   onClick={() => handleOpenBookDetail(book)}
-                  className="w-[280px] shrink-0 rounded-xl border border-border/50 bg-card shadow-sm hover:shadow-sm-lg transition-all duration-200 hover:-translate-y-1 cursor-pointer p-3.5"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.05, duration: 0.4 }}
+                  whileHover={{ y: -4 }}
+                  className="w-[280px] shrink-0 rounded-xl border border-border/50 bg-card shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer p-3.5"
                 >
                   <div className="h-40 rounded-lg overflow-hidden bg-background/60 flex items-center justify-center border border-border/40">
                     <img src={book.book_img} alt={book.title} className="h-full w-auto object-contain" />
@@ -262,7 +266,7 @@ const Home = () => {
                     <span className="text-xs text-foreground/60 uppercase tracking-[0.1em] font-medium">Price</span>
                     <span className="text-lg font-bold text-accent">${Number(book.price).toFixed(2)}</span>
                   </div>
-                </article>
+                </motion.article>
               ))}
             </div>
           </div>
@@ -290,11 +294,15 @@ const Home = () => {
 
           <div className="overflow-x-auto pb-2 [scrollbar-width:thin] [scrollbar-color:var(--color-primary)_transparent]">
             <div className="flex gap-4 min-w-max pr-2">
-              {bestSellers.slice(0, 10).map((book) => (
-                <article
+              {bestSellers.slice(0, 10).map((book, idx) => (
+                <motion.article
                   key={`popular-${book.id}`}
                   onClick={() => handleOpenBookDetail(book)}
-                  className="w-[280px] shrink-0 rounded-xl border border-border/50 bg-card shadow-sm hover:shadow-sm-lg transition-all duration-200 hover:-translate-y-1 cursor-pointer p-3.5"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.05, duration: 0.4 }}
+                  whileHover={{ y: -4 }}
+                  className="w-[280px] shrink-0 rounded-xl border border-border/50 bg-card shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer p-3.5"
                 >
                   <div className="h-40 rounded-lg overflow-hidden bg-background/60 flex items-center justify-center border border-border/40">
                     <img src={book.book_img} alt={book.title} className="h-full w-auto object-contain" />
@@ -306,7 +314,7 @@ const Home = () => {
                     <span className="text-xs text-foreground/60 uppercase tracking-[0.1em] font-medium">Price</span>
                     <span className="text-lg font-bold text-accent">${Number(book.price).toFixed(2)}</span>
                   </div>
-                </article>
+                </motion.article>
               ))}
             </div>
           </div>

@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap");
 
@@ -338,5 +337,170 @@
 
   .animate-glow {
     animation: glow 2s ease-in-out infinite;
+  }
+
+  /* Additional premium animations */
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes bounce-subtle {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+
+  @keyframes swipe-enter {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes blur-in {
+    from {
+      opacity: 0;
+      filter: blur(12px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounce-subtle 2s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 3s linear infinite;
+  }
+
+  .animate-ripple {
+    animation: ripple 0.6s ease-out;
+  }
+
+  .animate-swipe-enter {
+    animation: swipe-enter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .animate-blur-in {
+    animation: blur-in 0.6s ease-out;
+  }
+
+  /* Premium hover elevations */
+  .hover-lift {
+    @apply transition-all duration-200 hover:-translate-y-1 hover:shadow-md;
+  }
+
+  .hover-lift-sm {
+    @apply transition-all duration-150 hover:-translate-y-0.5 hover:shadow-sm;
+  }
+
+  /* Stagger animations for lists */
+  @keyframes stagger-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .stagger-item {
+    animation: stagger-in 0.5s ease-out backwards;
+  }
+
+  .stagger-item:nth-child(1) { animation-delay: 0ms; }
+  .stagger-item:nth-child(2) { animation-delay: 50ms; }
+  .stagger-item:nth-child(3) { animation-delay: 100ms; }
+  .stagger-item:nth-child(4) { animation-delay: 150ms; }
+  .stagger-item:nth-child(5) { animation-delay: 200ms; }
+  .stagger-item:nth-child(6) { animation-delay: 250ms; }
+
+  /* Loading skeleton with shimmer */
+  .skeleton-shimmer {
+    @apply animate-shimmer bg-muted relative overflow-hidden;
+  }
+
+  /* Focus visible states */
+  .focus-ring {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  /* Smooth page transitions */
+  .page-enter {
+    @apply animate-blur-in;
+  }
+
+  .page-exit {
+    @apply animate-fade-out;
+  }
+
+  /* Premium text effects */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+  }
+
+  /* Interactive state classes */
+  .interactive-hover {
+    @apply transition-all duration-200 cursor-pointer hover:scale-105;
+  }
+
+  .interactive-press {
+    @apply active:scale-95 transition-transform duration-100;
+  }
+
+  /* Glass morphism enhancement */
+  .glass-premium {
+    @apply bg-background/40 backdrop-blur-xl border border-border/30 shadow-xl;
+  }
+
+  /* Responsive container utilities */
+  .container-responsive {
+    @apply w-full px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Smooth color transitions for theme switching */
+  .theme-transition {
+    @apply transition-colors duration-300;
   }
 }

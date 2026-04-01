@@ -127,20 +127,20 @@ const Dashboard = () => {
     .slice(0, 3);
 
   return (
-    <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div>
-        <p className="text-xs uppercase tracking-[0.24em] text-slate-500 font-semibold mb-2">Overview</p>
-        <h1 className="text-3xl font-bold text-slate-900">Admin Dashboard</h1>
-        <p className="text-sm text-slate-500 mt-1">Track store performance and review recent activity.</p>
+        <p className="text-xs uppercase tracking-[0.1em] text-primary font-bold mb-3">Overview</p>
+        <h1 className="text-4xl font-bold text-foreground">Admin Dashboard</h1>
+        <p className="text-sm text-foreground/70 mt-2">Track store performance and review recent activity.</p>
       </div>
 
       {error && (
-        <div className="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700">
+        <div className="rounded-lg border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm font-medium text-destructive">
           {error}
         </div>
       )}
       {success && (
-        <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700">
+        <div className="rounded-lg border border-success/30 bg-success/5 px-4 py-3 text-sm font-medium text-success">
           {success}
         </div>
       )}
@@ -149,25 +149,25 @@ const Dashboard = () => {
         {stats.map((stat, i) => {
           const Icon = stat.icon;
           return (
-            <div key={i} className="group bg-white/85 rounded-3xl p-6 border border-white/80 shadow-[0_16px_36px_rgba(15,23,42,0.08)] hover:shadow-[0_20px_44px_rgba(15,23,42,0.12)] transition-all duration-300">
+            <div key={i} className="group rounded-2xl border border-border/50 bg-card shadow-sm p-6 hover:shadow-md transition-all duration-300 hover:-translate-y-1">
               <div className="flex justify-between items-start mb-6">
-                <div className={`p-4 rounded-2xl ${stat.bg} ${stat.color} group-hover:scale-110 transition-transform`}>
-                  <Icon className="h-6 w-6" />
+                <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                  <Icon className="h-5 w-5" />
                 </div>
-                <div className={`flex items-center gap-1 text-xs font-bold px-2 py-1 rounded-full ${stat.isPositive ? "text-emerald-700 bg-emerald-100" : "text-rose-700 bg-rose-100"}`}>
+                <div className={`flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full ${stat.isPositive ? "bg-success/10 text-success" : "bg-destructive/10 text-destructive"}`}>
                   {stat.isPositive ? <ArrowUpRight size={14} /> : <ArrowDownRight size={14} />}
                   {stat.change}
                 </div>
               </div>
 
-              <p className="text-sm font-bold text-slate-400 uppercase tracking-wider">{stat.label}</p>
-              <h3 className="text-3xl font-extrabold text-slate-900 mt-1">{stat.value}</h3>
+              <p className="text-xs font-bold text-foreground/60 uppercase tracking-[0.08em]">{stat.label}</p>
+              <h3 className="text-3xl font-bold text-foreground mt-2">{stat.value}</h3>
 
-              <div className="mt-6 flex items-end gap-1 h-8">
+              <div className="mt-4 flex items-end gap-1 h-8">
                 {stat.trend.map((val, idx) => (
                   <div
                     key={idx}
-                    className={`flex-1 rounded-full opacity-50 group-hover:opacity-100 transition-all duration-500 ${stat.color.replace("text", "bg")}`}
+                    className="flex-1 rounded-full bg-gradient-to-t from-primary to-accent opacity-60 group-hover:opacity-100 transition-all duration-500"
                     style={{ height: `${val}%` }}
                   />
                 ))}
@@ -178,35 +178,35 @@ const Dashboard = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 bg-white/90 rounded-3xl border border-white/80 shadow-[0_14px_34px_rgba(15,23,42,0.07)] overflow-hidden">
-          <div className="p-6 border-b border-slate-100 flex items-center justify-between">
+        <div className="lg:col-span-2 rounded-2xl border border-border/50 bg-card shadow-sm overflow-hidden">
+          <div className="p-6 border-b border-border/30 flex items-center justify-between">
             <div>
-              <h3 className="text-lg font-bold text-slate-900">Recent Orders</h3>
-              <p className="text-xs text-slate-400 mt-0.5">Live from backend invoices</p>
+              <h3 className="text-lg font-bold text-foreground">Recent Orders</h3>
+              <p className="text-xs text-foreground/60 mt-1">Live from backend invoices</p>
             </div>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-left">
-              <thead className="bg-slate-50/60">
+              <thead className="bg-background/50">
                 <tr>
-                  <th className="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Transaction</th>
-                  <th className="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Customer</th>
-                  <th className="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Status</th>
-                  <th className="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Value</th>
-                  <th className="px-6 py-4"></th>
+                  <th className="px-6 py-3 text-xs font-bold text-foreground/60 uppercase tracking-[0.08em]">Transaction</th>
+                  <th className="px-6 py-3 text-xs font-bold text-foreground/60 uppercase tracking-[0.08em]">Customer</th>
+                  <th className="px-6 py-3 text-xs font-bold text-foreground/60 uppercase tracking-[0.08em]">Status</th>
+                  <th className="px-6 py-3 text-xs font-bold text-foreground/60 uppercase tracking-[0.08em]">Value</th>
+                  <th className="px-6 py-3"></th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-border/20">
                 {recentOrders.map((order) => (
-                  <tr key={order.id} className="group hover:bg-slate-50/70 transition-colors">
+                  <tr key={order.id} className="group hover:bg-background/60 transition-colors">
                     <td className="px-6 py-4">
-                      <p className="text-sm font-bold text-slate-900">{order.id}</p>
-                      <p className="text-xs text-slate-400 truncate max-w-[180px]">
+                      <p className="text-sm font-bold text-foreground">{order.id}</p>
+                      <p className="text-xs text-foreground/60 truncate max-w-[180px]">
                         {order.items.map((item) => item.title).join(", ")}
                       </p>
                     </td>
                     <td className="px-6 py-4">
-                      <p className="text-sm font-bold text-slate-800">{order.customerName}</p>
+                      <p className="text-sm font-bold text-foreground">{order.customerName}</p>
                       <p className="text-[10px] text-slate-400">{new Date(order.createdAt).toLocaleString()}</p>
                     </td>
                     <td className="px-6 py-4">
